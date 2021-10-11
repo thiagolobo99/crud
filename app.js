@@ -11,7 +11,7 @@ dotenv.config();
 mongoose.connect(`mongodb+srv://eu-mesmo:${process.env.DB_PASSWORD}@nodejscluster.zv7rq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
 
 mongoose.connection.on('connected', function () {
-    console.log('Connected to Database Server ' + 'test');
+    console.log('Connected to Database Server');
 })
 
 mongoose.connection.on('error', function (err) {
