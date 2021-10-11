@@ -4,8 +4,11 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
-mongoose.connect('mongodb+srv://eu-mesmo:<password>@nodejscluster.zv7rq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+dotenv.config();
+
+mongoose.connect(`mongodb+srv://eu-mesmo:${process.env.DB_PASSWORD}@nodejscluster.zv7rq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`);
 
 mongoose.connection.on('connected', function () {
     console.log('Connected to Database Server ' + 'test');
