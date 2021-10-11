@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://eu-mesmo:nnn@nodejscluster.zv7rq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://eu-mesmo:<password>@nodejscluster.zv7rq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 
 mongoose.connection.on('connected', function () {
     console.log('Connected to Database Server ' + 'test');
