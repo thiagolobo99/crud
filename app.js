@@ -4,6 +4,13 @@ const express = require('express');
 // inicializando a app express
 const app = express();
 
+app.get('/', (req, res) => {
+    res.send('END POINT INVÁLIDO!')
+});
+
+const routes = require('./routes/api');
+app.use('/api', routes);
+
 let port = 5000;
 
 // servidor estará ativo na porta 5000
