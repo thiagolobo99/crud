@@ -1,12 +1,20 @@
 // associando a dependência express instalada
 const express = require('express');
-const bodyParser = require('body-parser');
-
-// inicializando a app express
 const app = express();
-
-// este middleware deve estar acima das routers-handlers
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://eu-mesmo:nnn@nodejscluster.zv7rq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+
+mongoose.connection.on('connected', function () {
+    console.log('Connected to Database Server ' + 'test');
+})
+
+mongoose.connection.on('error', function (err) {
+    console.log('Database error ' + err)
+})
+
 
 app.get('/', (req, res) => {
     res.send('END POINT INVÁLIDO!')
