@@ -10,12 +10,12 @@ router.get('/teste', apiController.test);
 router.get('/details', apiController.details);
 
 // ToDo: adicionar novo pontos
-router.get('/interest', apiController.add);
+router.post('/interest', apiController.add);
 
 // ToDo: atualizar ponto de interesse
-router.get('/interest/:id', apiController.update);
+router.put('/interest/:id', apiController.update);
 
 // ToDo: apagar ponto de interesse
-router.get('/interest/:id', apiController.delete);
+router.delete('/interest/:id', apiController.delete);
 
 module.exports = router;
