@@ -9,7 +9,12 @@ exports.details = function (req, res) {
 
 // ToDo: adicionar novo ponto
 exports.add = function (req, res) {
-    res.send({type: 'POST'});
+    console.log('You made a POST request: ', req.body);
+    res.send({
+        type: 'POST',
+        name: req.body.name,
+        rank: req.body.rank
+    });
 };
 
 // ToDo: atualizar ponto

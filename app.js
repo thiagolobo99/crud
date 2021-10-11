@@ -1,8 +1,12 @@
 // associando a dependência express instalada
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // inicializando a app express
 const app = express();
+
+// este middleware deve estar acima das routers-handlers
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.send('END POINT INVÁLIDO!')
