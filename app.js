@@ -26,6 +26,14 @@ app.get('/', (req, res) => {
 const routes = require('./routes/api');
 app.use('/api', routes);
 
+// Error handling middlware
+app.use(function (err, req, res, next) {
+    console.log(err);
+    res.status(422).send({
+        error: err.message
+    });
+})
+
 let port = 5000;
 
 // servidor estará ativo na porta 5000

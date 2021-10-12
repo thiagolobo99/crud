@@ -1,28 +1,38 @@
+const PI = require('../models/PImodel');
+
 exports.test = (req, res) => {
     res.send('Olá! Teste ao Controller');
 }
 
 // ToDo: listar os pontos
 exports.details = function (req, res) {
-    res.send({type: 'POST'});
+    res.send({
+        type: 'POST'
+    });
 };
 
 // ToDo: adicionar novo ponto
-exports.add = function (req, res) {
-    console.log('You made a POST request: ', req.body);
-    res.send({
-        type: 'POST',
-        name: req.body.name,
-        rank: req.body.rank
-    });
+exports.add = function (req, res, next) {
+    console.log(next)
+    console.log('A requisição chegou na função CREATE')
+    PI.create(req.body).then(function (pi) {
+        console.log(pi)
+        res.send(pi);
+    }).catch(next);
 };
 
 // ToDo: atualizar ponto
 exports.update = function (req, res) {
-    res.send({type: 'PUT'});
+    res.send({
+        type: 'PUT'
+    });
 };
 
 // ToDo: apagar o ponto
-exports.delete = function (req, res) {
-    res.send({type: 'DELETE'});
+exports.delete = function (req, res, next) {
+    PI.findByIdAndRemove({
+        _id: req.params.id
+    }).then(function (pi) {
+        res.send(pi);
+    }).catch(next);
 };
