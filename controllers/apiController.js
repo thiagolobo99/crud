@@ -33,6 +33,6 @@ exports.delete = function (req, res, next) {
     PI.findByIdAndRemove({
         _id: req.params.id
     }).then(function (pi) {
-        res.send(pi);
+        res.send(`O documento com id: ${pi.id} foi deletado com sucesso.`);
     }).catch(next);
 };
