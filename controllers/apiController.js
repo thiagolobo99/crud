@@ -22,10 +22,16 @@ exports.add = function (req, res, next) {
 };
 
 // ToDo: atualizar ponto
-exports.update = function (req, res) {
-    res.send({
-        type: 'PUT'
-    });
+exports.update = function (req, res, next) {
+    PI.findByIdAndUpdate({
+        _id: req.params.id
+    }, req.body).then(function () {
+        PI.findOne({
+            _id: req.params.id
+        }).then(function (pi) {
+            res.send(pi);
+        });
+    }).catch(next);
 };
 
 // ToDo: apagar o ponto
