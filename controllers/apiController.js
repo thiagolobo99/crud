@@ -6,19 +6,23 @@ exports.test = (req, res) => {
 
 // ToDo: listar os pontos
 exports.details = function (req, res, next) {
-    let lng = parseFloat(req.query.lng);
-    let lat = parseFloat(req.query.lat);
+    // let lng = parseFloat(req.query.lng);
+    // let lat = parseFloat(req.query.lat);
 
-    PI.aggregate([{
-        '$geoNear': {
-            "near": {
-                "type": "Point",
-                "coordinates": [lng, lat]
-            },
-            "spherical": true,
-            "distanceField": 'dist'
-        }
-    }]).then(pi => res.send(pi)).catch(next);
+    // PI.aggregate([{
+    //     '$geoNear': {
+    //         "near": {
+    //             "type": "Point",
+    //             "coordinates": [lng, lat]
+    //         },
+    //         "spherical": true,
+    //         "distanceField": 'dist'
+    //     }
+    // }]).then(pi => res.send(pi)).catch(next);
+
+    PI.find({}).then(function (pi) {
+        res.send(pi);
+    }).catch(next);
 };
 
 // ToDo: adicionar novo ponto

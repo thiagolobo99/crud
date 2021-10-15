@@ -14,16 +14,16 @@ const PISchema = new Schema({
         type: Boolean,
         default: true,
     },
-    geometry: {
-        type: {
-            type: String,
-            default: 'Point'
-        },
-        coordinates: {
-            type: [Number],
-            index: '2dsphere'
-        }
-    }
+    // geometry: {
+    //     type: {
+    //         type: String,
+    //         default: 'Point'
+    //     },
+    //     coordinates: {
+    //         type: [Number],
+    //         index: '2dsphere'
+    //     }
+    // }
 });
 
 const PI = mongoose.model('PontosInteresse', PISchema);
